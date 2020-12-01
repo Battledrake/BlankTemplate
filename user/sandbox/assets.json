@@ -5124,7 +5124,7 @@
 			"type": "Level",
 			"guid": "6811d90d-6cbe-567e-2a78-7c127c666319",
 			"name": "example",
-			"timestamp": 1602113992,
+			"timestamp": 1606797976,
 			"files": [ "levels/example/example.level" ],
 			"workFiles": [ ],
 			"source": "",
@@ -5178,10 +5178,6 @@
 					"usageCount": 0
 				},
 				{
-					"path": "%engine%/engineassets/objects/editorprimitive.mtl",
-					"usageCount": 0
-				},
-				{
 					"path": "%engine%/engineassets/objects/primitive_sphere.cgf",
 					"usageCount": 0
 				},
@@ -5190,22 +5186,9 @@
 					"usageCount": 0
 				},
 				{
-					"path": "%engine%/engineassets/textures/defaults/16_12.dds",
+					"path": "%engine%/engineassets/textures/skys/night/half_moon.dds",
 					"usageCount": 0
 				},
-				{
-					"path": "%engine%/engineassets/textures/defaults/16_34.dds",
-					"usageCount": 0
-				},
-				{
-					"path": "%engine%/engineassets/textures/defaults/16_5.dds",
-					"usageCount": 0
-				},
-				{
-					"path": "%engine%/engineassets/textures/defaults/16_grey.dds",
-					"usageCount": 0
-				},
-				{ "path": "engineassets/materials/sky/sky.mtl", "usageCount": 0 },
 				{
 					"path": "engineassets/materials/water/ocean_default.mtl",
 					"usageCount": 0
@@ -5215,22 +5198,9 @@
 					"usageCount": 0
 				},
 				{ "path": "engineassets/textures/grey.dds", "usageCount": 0 },
-				{
-					"path": "engineassets/textures/skys/night/half_moon.dds",
-					"usageCount": 0
-				},
-				{ "path": "libs/environmentpresets/example.xml", "usageCount": 0 },
+				{ "path": "libs/environmentpresets/example.env", "usageCount": 1 },
 				{ "path": "libs/flownodes/substitutions.xml", "usageCount": 0 },
-				{ "path": "objects/helper_illum.mtl", "usageCount": 0 },
-				{ "path": "objects/sphere.cgf", "usageCount": 0 },
-				{
-					"path": "textures/cubemaps/example/environmentprobe_cm.dds",
-					"usageCount": 0
-				},
-				{
-					"path": "textures/cubemaps/example/environmentprobe_cm_diff.dds",
-					"usageCount": 0
-				}
+				{ "path": "objects/sphere.cgf", "usageCount": 0 }
 			]
 		},
 		{
@@ -5303,6 +5273,18 @@
 			"source": "",
 			"metadata": "libs/config/defaultprofile.xml.cryasset",
 			"details": [ { "key": "rootTag", "value": "profile" } ],
+			"dependencies": [ ]
+		},
+		{
+			"type": "Environment",
+			"guid": "b9c0932e-cb24-16c6-4965-13469ffaea0f",
+			"name": "example",
+			"timestamp": 1606797937,
+			"files": [ "libs/environmentpresets/example.env" ],
+			"workFiles": [ ],
+			"source": "",
+			"metadata": "libs/environmentpresets/example.env.cryasset",
+			"details": [ ],
 			"dependencies": [ ]
 		},
 		{
