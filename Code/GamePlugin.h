@@ -12,7 +12,7 @@ class CGamePlugin
 {
 public:
 	CRYINTERFACE_SIMPLE(Cry::IEnginePlugin)
-	CRYGENERATE_SINGLETONCLASS_GUID(CGamePlugin, "Blank", "f01244b0-a4e7-4dc6-91e1-0ed18906fe7c"_cry_guid)
+	CRYGENERATE_SINGLETONCLASS_GUID(CGamePlugin, "BlankTemplate", "f01244b0-a4e7-4dc6-91e1-0ed18906fe7c"_cry_guid)
 
 		virtual ~CGamePlugin();
 

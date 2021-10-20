@@ -1,7 +1,6 @@
 #pragma once
 
 #include <CryEntitySystem/IEntityComponent.h>
-#include <CryMath/Cry_Camera.h>
 
 #include <ICryMannequin.h>
 #include <CrySchematyc/Utils/EnumFlags.h>
@@ -10,9 +9,6 @@
 #include <DefaultComponents/Input/InputComponent.h>
 #include <DefaultComponents/Audio/ListenerComponent.h>
 
-////////////////////////////////////////////////////////
-// Represents a player participating in gameplay
-////////////////////////////////////////////////////////
 class CPlayerComponent final : public IEntityComponent
 {
 	enum class EInputFlagType
@@ -33,18 +29,17 @@ public:
 	CPlayerComponent() = default;
 	virtual ~CPlayerComponent() = default;
 
-	// IEntityComponent
-	virtual void Initialize() override;
-
-	virtual Cry::Entity::EventFlags GetEventMask() const override;
-	virtual void ProcessEvent(const SEntityEvent& event) override;
-	// ~IEntityComponent
-
-	// Reflect type to set a unique identifier for this component
 	static void ReflectType(Schematyc::CTypeDesc<CPlayerComponent>& desc)
 	{
 		desc.SetGUID("{63F4C0C6-32AF-4ACB-8FB0-57D45DD14725}"_cry_guid);
 	}
+
+protected:
+	// IEntityComponent
+	virtual void Initialize() override;
+	virtual Cry::Entity::EventFlags GetEventMask() const override;
+	virtual void ProcessEvent(const SEntityEvent& event) override;
+	// ~IEntityComponent
 
 private:
 	// Private Methods

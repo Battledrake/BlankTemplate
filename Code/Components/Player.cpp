@@ -21,18 +21,14 @@ void CPlayerComponent::Initialize()
 {
 	m_inputFlags.Clear();
 
-	m_mouseDeltaRotation = ZERO;	// Create the camera component, will automatically update the viewport every frame
+	m_mouseDeltaRotation = ZERO;
 	m_pCameraComponent = m_pEntity->GetOrCreateComponent<Cry::DefaultComponents::CCameraComponent>();
 
-	// Create the audio listener component.
 	m_pAudioListenerComponent = m_pEntity->GetOrCreateComponent<Cry::Audio::DefaultComponents::CListenerComponent>();
 
-	// Get the input component, wraps access to action mapping so we can easily get callbacks when inputs are triggered
 	m_pInputComponent = m_pEntity->GetOrCreateComponent<Cry::DefaultComponents::CInputComponent>();
 
-	// Register an action, and the callback that will be sent when it's triggered
 	m_pInputComponent->RegisterAction("player", "moveleft", [this](int activationMode, float value) { HandleInputFlagChange(EInputFlag::MoveLeft, (EActionActivationMode)activationMode); });
-	// Bind the 'A' key the "moveleft" action
 	m_pInputComponent->BindAction("player", "moveleft", eAID_KeyboardMouse, EKeyId::eKI_A);
 
 	m_pInputComponent->RegisterAction("player", "moveright", [this](int activationMode, float value) { HandleInputFlagChange(EInputFlag::MoveRight, (EActionActivationMode)activationMode); });
@@ -65,7 +61,6 @@ void CPlayerComponent::ProcessEvent(const SEntityEvent& event)
 	{
 		case Cry::Entity::EEvent::GameplayStarted:
 		{
-			//TODO: Initialize gameplay stuff
 		}
 		break;
 		case Cry::Entity::EEvent::Update:
@@ -75,7 +70,6 @@ void CPlayerComponent::ProcessEvent(const SEntityEvent& event)
 			const float moveSpeed = 20.5f;
 			Vec3 velocity = ZERO;
 
-			// Check input to calculate local space velocity
 			if (m_inputFlags & EInputFlag::MoveLeft)
 			{
 				velocity.x -= moveSpeed * frameTime;
@@ -93,26 +87,20 @@ void CPlayerComponent::ProcessEvent(const SEntityEvent& event)
 				velocity.y -= moveSpeed * frameTime;
 			}
 
-			// Update the player's transformation
 			Matrix34 transformation = m_pEntity->GetWorldTM();
 			transformation.AddTranslation(transformation.TransformVector(velocity));
 
-			// Update entity rotation based on latest input
 			Ang3 ypr = CCamera::CreateAnglesYPR(Matrix33(transformation));
 
 			const float rotationSpeed = 0.002f;
 			ypr.x += m_mouseDeltaRotation.x * rotationSpeed;
 			ypr.y += m_mouseDeltaRotation.y * rotationSpeed;
-
-			// Disable roll
 			ypr.z = 0;
 
 			transformation.SetRotation33(CCamera::CreateOrientationYPR(ypr));
 
-			// Reset the mouse delta since we "used" it this frame
 			m_mouseDeltaRotation = ZERO;
 
-			// Apply set position and rotation to the entity
 			m_pEntity->SetWorldTM(transformation);
 		}
 		break;
@@ -143,7 +131,6 @@ void CPlayerComponent::HandleInputFlagChange(const CEnumFlags<EInputFlag> flags,
 		{
 			if (activationMode == eAAM_OnRelease)
 			{
-				// Toggle the bit(s)
 				m_inputFlags ^= flags;
 			}
 		}
